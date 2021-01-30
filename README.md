@@ -14,10 +14,23 @@ This role uses the role https://github.com/cendio/ansible-role-thinlinc-server/r
 Role Variables
 --------------
 
+```yaml
+thinlinc_accept_eula: "no"
+```
+
+By changing this to "yes", you agree to the terms specified in the
+ThinLinc End User License Agreement. NOTE: Setting this to yes is a
+requirement for installing and using ThinLinc.
+
+```yaml
 thinlinc_beta_version: "4.12.1"
 thinlinc_beta_build: "6724"
 thinlinc_beta_server_bundle: "tl-4.12.1beta1-server.zip"
 thinlinc_beta_download_dir: "/tmp"
+```
+
+ThinLinc version, build number, bundle names and download directory.
+
 
 Dependencies
 ------------
