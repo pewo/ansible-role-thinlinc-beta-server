@@ -18,6 +18,7 @@
     thinlinc_build: "{{ thinlinc_beta_build }}"
     thinlinc_server_bundle: "{{ thinlinc_beta_server_bundle }}"
     thinlinc_download_dir: "{{ thinlinc_beta_download_dir }}"
+    thinlinc_accept_eula: "{{ thinlinc_beta_accept_eula }}"
 
 
 #- debug: var=thinlinc_server_bundle,thinlinc_version,thinlinc_build,thinlinc_download_dir 

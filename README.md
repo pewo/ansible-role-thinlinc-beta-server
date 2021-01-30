@@ -15,7 +15,7 @@ Role Variables
 --------------
 
 ```yaml
-thinlinc_accept_eula: "no"
+thinlinc_beta_accept_eula: "no"
 ```
 
 By changing this to "yes", you agree to the terms specified in the
