@@ -1,0 +1,26 @@
+---
+# tasks file for ansible-role-thinlinc-beta-server
+
+- name: Download latest beta package
+  get_url:
+    url: "https://www.cendio.com/downloads/beta/{{ thinlinc_beta_server_bundle }}"
+    dest: "{{ thinlinc_beta_download_dir }}/{{ thinlinc_beta_server_bundle }}"
+    http_agent: "ansible-role-thinlinc-beta-server"
+    mode: '0440'
+  register: download
+  delegate_to: localhost
+
+- name: Execute standard ansible-role-thinlinc-server
+  include_role: 
+    name: ansible-role-thinlinc-server
+  vars:
+    thinlinc_version: "{{ thinlinc_beta_version }}"
+    thinlinc_build: "{{ thinlinc_beta_build }}"
+    thinlinc_server_bundle: "{{ thinlinc_beta_server_bundle }}"
+    thinlinc_download_dir: "{{ thinlinc_beta_download_dir }}"
+
+
+#- debug: var=thinlinc_server_bundle,thinlinc_version,thinlinc_build,thinlinc_download_dir 
+#- debug: var=thinlinc_download_dir 
+#  when: thinlinc_download_dir is defined and thinlinc_download_dir != ""
+
