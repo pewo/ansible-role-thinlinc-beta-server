@@ -2,7 +2,9 @@ ansible-role-thinlinc-beta-server
 =================================
 
 This is a role that installs the latest Thinlinc beta release. 
-Please read [https://github.com/cendio/ansible-role-thinlinc-server/blob/master/README.md]
+Please read:
+  - [ansible-role-thinlinc-server README.md](https://github.com/cendio/ansible-role-thinlinc-server/blob/master/README.md) 
+
 
 Requirements
 ------------
@@ -38,7 +40,7 @@ The final step is to apply the playbook to the inventory, like this:
 License
 -------
 
-BSD
+GPLv3.
 
 Author Information
 ------------------
