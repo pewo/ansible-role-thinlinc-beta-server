@@ -65,7 +65,7 @@ applying the thinlinc-server role to the thinlinc_servers group with a
 ```yaml
 - hosts: thinlinc_servers
   roles:
-    - { role: ansible-role-thinlinc-beta-server, thinlinc_accept_eula: "yes" }
+    - { role: ansible-role-thinlinc-beta-server, thinlinc_beta_accept_eula: "yes" }
 ```
 
 The final step is to apply the playbook to the inventory, like this:
