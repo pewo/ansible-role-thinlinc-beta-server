@@ -1,14 +1,25 @@
 ---
 # tasks file for ansible-role-thinlinc-beta-server
 
-- name: Download latest beta package
-  get_url:
-    url: "https://www.cendio.com/downloads/beta/{{ thinlinc_beta_server_bundle }}"
-    dest: "{{ thinlinc_beta_download_dir }}/{{ thinlinc_beta_server_bundle }}"
-    http_agent: "ansible-role-thinlinc-beta-server"
-    mode: '0440'
-  register: download
-  delegate_to: localhost
+- block:
+
+  - name: Check if we already have downloaded the latest beta package
+    stat:
+      path: "{{ thinlinc_beta_server_bundle_location }}"
+    register: st
+    delegate_to: localhost
+
+  - name: Download latest beta package
+    get_url:
+      url: "https://www.cendio.com/downloads/beta/{{ thinlinc_beta_server_bundle }}"
+      dest: "{{ thinlinc_beta_server_bundle_location }}"
+      http_agent: "ansible-role-thinlinc-beta-server"
+      mode: '0440'
+    register: download
+    delegate_to: localhost
+    when: st.stat.exists == False
+
+  when: thinlinc_beta_server_bundle_location is match("^/")
 
 - name: Execute standard ansible-role-thinlinc-server
   include_role: 
@@ -17,11 +28,6 @@
     thinlinc_version: "{{ thinlinc_beta_version }}"
     thinlinc_build: "{{ thinlinc_beta_build }}"
     thinlinc_server_bundle: "{{ thinlinc_beta_server_bundle }}"
-    thinlinc_download_dir: "{{ thinlinc_beta_download_dir }}"
     thinlinc_accept_eula: "{{ thinlinc_beta_accept_eula }}"
-
-
-#- debug: var=thinlinc_server_bundle,thinlinc_version,thinlinc_build,thinlinc_download_dir 
-#- debug: var=thinlinc_download_dir 
-#  when: thinlinc_download_dir is defined and thinlinc_download_dir != ""
+    thinlinc_server_bundle_location: "{{ thinlinc_beta_server_bundle_location }}"
 
