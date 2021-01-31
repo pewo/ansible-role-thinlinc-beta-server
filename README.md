@@ -28,7 +28,7 @@ thinlinc_beta_build: "6724"
 thinlinc_beta_server_bundle: "/local/artifactory/tl-4.12.1beta1-server.zip"
 ```
 
-ThinLinc version, build number, bundle names and download directory.
+ThinLinc version, build number and bundle names.
 
 
 Dependencies
