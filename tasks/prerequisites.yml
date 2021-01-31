@@ -1,0 +1,7 @@
+---
+
+- name: Trying to find distribution prerequisites 
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower | map('trim') | join }}.yml"
+    - "default.yml"

@@ -1,0 +1,8 @@
+---
+
+- name: Install prerequisites on Ubuntu focal
+  apt:
+    pkg:
+    - python2
+    - python-apt
+  when: ansible_distribution_release is defined and ansible_distribution_release == "focal"
