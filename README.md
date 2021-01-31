@@ -26,7 +26,7 @@ requirement for installing and using ThinLinc.
 thinlinc_beta_version: "4.12.1"
 thinlinc_beta_build: "6724"
 thinlinc_beta_server_bundle: "tl-4.12.1beta1-server.zip"
-thinlinc_beta_download_dir: "/tmp"
+thinlinc_server_bundle_location: "/tmp/{{ thinlinc_beta_server_bundle }}"
 ```
 
 ThinLinc version, build number, bundle names and download directory.
