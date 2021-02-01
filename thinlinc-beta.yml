@@ -1,0 +1,56 @@
+---
+- hosts: all
+  gather_facts: false
+
+  pre_tasks:
+    - name: Verify python installation
+      raw: python -V || python2 -V || python3 -V
+      failed_when: false
+      changed_when: false
+      register: python
+
+    - block:
+      - name: Check if we have zypper
+        raw: zypper -V 
+        register: zypper_rc
+        changed_when: false
+        failed_when: false
+        when: pkg is not defined
+
+      - set_fact:
+          pkg: rpm --rebuilddb && zypper install -y python python-xml
+        when: pkg is not defined and zypper_rc.rc == 0
+
+      - name: Check if we have apt
+        raw: apt --version
+        register: apt_rc
+        changed_when: false
+        failed_when: false
+        when: pkg is not defined
+
+      - set_fact:
+          pkg: apt-get install python -y
+        when: pkg is not defined and apt_rc.rc == 0 
+
+      - name: Check if we have yum
+        raw: yum --version
+        register: yum_rc
+        changed_when: false
+        failed_when: false
+        when: pkg is not defined
+
+      - set_fact:
+          pkg: yum install python -y
+        when: pkg is not defined and yum_rc.rc == 0
+
+      - name: install python
+        raw: "{{ pkg }}"
+        when: pkg is defined
+
+      when: python.rc != 0
+
+    - name: Init facts
+      setup:
+
+  roles:
+    - { role: ansible-role-thinlinc-beta-server, thinlinc_beta_accept_eula: "yes" }
