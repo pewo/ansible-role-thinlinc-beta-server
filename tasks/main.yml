@@ -21,9 +21,6 @@
   
   when: thinlinc_beta_server_bundle is match("^/")
  
-- name: Include distribution prerequisites tasks
-  include_tasks: prerequisites.yml
-
 - name: Execute standard ansible-role-thinlinc-server
   include_role: 
     name: ansible-role-thinlinc-server
