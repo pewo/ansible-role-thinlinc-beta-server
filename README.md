@@ -23,9 +23,9 @@ ThinLinc End User License Agreement. NOTE: Setting this to yes is a
 requirement for installing and using ThinLinc.
 
 ```yaml
-thinlinc_beta_version: "4.13.0"
-thinlinc_beta_build: "2241"
-thinlinc_beta_server_bundle: "/local/artifactory/tl-4.13.0beta1-server.zip"
+thinlinc_beta_version: "4.14.0"
+thinlinc_beta_build: "2394"
+thinlinc_beta_server_bundle: "/local/artifactory/tl-4.14.0beta1-server.zip"
 ```
 
 ThinLinc version, build number and bundle names.
